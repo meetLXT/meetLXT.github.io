@@ -1,0 +1,579 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/reindeer2.png">
+  <link rel="icon" href="/img/reindeer2.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="前言工欲善其事，必先利其器。学生时代，一拿到书就先包上漂亮的书皮，准备学习前先拿出一堆自己觉得可能用的笔的往往是学习一般的学生；而将这个习惯延续至现在就演变成为，好好提升技术和钻研科研之前先把各种工具整的好看且舒适。（功能方面，主要实现了代码高亮和代码补全）">
+  <meta name="author" content="LXT">
+  <meta name="keywords" content="">
+  
+  <title>用oh my zsh &amp; powerlevel10k打造个性化舒适终端 - PLpudding‘s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>PLpudding's blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bkg.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="用oh my zsh & powerlevel10k打造个性化舒适终端">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-19 22:51" pubdate>
+        2021年4月19日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      865 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">用oh my zsh &amp; powerlevel10k打造个性化舒适终端</h1>
+            
+            <div class="markdown-body">
+              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>工欲善其事，必先利其器。学生时代，一拿到书就先包上漂亮的书皮，准备学习前先拿出一堆自己觉得可能用的笔的往往是学习一般的学生；而将这个习惯延续至现在就演变成为，好好提升技术和钻研科研之前先把各种工具整的好看且舒适。（功能方面，主要实现了代码高亮和代码补全）</p>
+<span id="more"></span>
+<p>先上预览图：</p>
+<p><img src="/2021/04/19/%E7%94%A8oh-my-zsh-powerlevel10k%E6%89%93%E9%80%A0%E4%B8%AA%E6%80%A7%E5%8C%96%E8%88%92%E9%80%82%E7%BB%88%E7%AB%AF/image-20210419234840397.png" srcset="/img/loading.gif" lazyload alt="terminal效果图"></p>
+<p><img src="/2021/04/19/%E7%94%A8oh-my-zsh-powerlevel10k%E6%89%93%E9%80%A0%E4%B8%AA%E6%80%A7%E5%8C%96%E8%88%92%E9%80%82%E7%BB%88%E7%AB%AF/image-20210419234548494.png" srcset="/img/loading.gif" lazyload alt="iterm2效果图"></p>
+<p>前情提要：</p>
+<ul>
+<li>terminal本身就可以在偏好设置里修改主题、字体、光标等，我之前选择的是homebrew；</li>
+<li><p>默认可以科学上网；</p>
+</li>
+<li><p>下面的所有操作首先先默认已经安装好了git；</p>
+</li>
+<li>iterm2可以安装也可以不安装，下面会展开讲。</li>
+</ul>
+<h1 id="安装oh-my-zsh"><a href="#安装oh-my-zsh" class="headerlink" title="安装oh my zsh"></a>安装oh my zsh</h1><p>首先需要切换成zsh：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">chsh -s <span class="hljs-regexp">/bin/</span>zsh<br></code></pre></td></tr></table></figure>
+<p>当然，以后如果需要的话也可以切换回bash：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">chsh -s <span class="hljs-regexp">/bin/</span>bash<br></code></pre></td></tr></table></figure>
+<p>安装方式有两种，可以使用curl或wget。</p>
+<ul>
+<li>curl安装方式：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sh -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>&quot;</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>wget安装方式：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sh -c <span class="hljs-string">&quot;<span class="hljs-subst">$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)</span>&quot;</span><br></code></pre></td></tr></table></figure>
+<p>另外附上<a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh">oh-my-zsh开源地址</a></p>
+<h1 id="安装命令补全插件"><a href="#安装命令补全插件" class="headerlink" title="安装命令补全插件"></a>安装命令补全插件</h1><p>这是oh my zsh的一个插件，执行脚本安装。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">cd ~<span class="hljs-regexp">/.oh-my-zsh/</span>custom<span class="hljs-regexp">/plugins/</span><br>git clone https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/zsh-users/</span>zsh-autosuggestions<br></code></pre></td></tr></table></figure>
+<p>这时我们再次打开zshrc文件进行编辑。</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">vi ~<span class="hljs-string">/.zshrc</span><br></code></pre></td></tr></table></figure>
+<p>找到plugins，此时plugins中应该已经有了git，我们需要把代码补全zsh-autosuggestions也加上：</p>
+<p><img src="/2021/04/19/%E7%94%A8oh-my-zsh-powerlevel10k%E6%89%93%E9%80%A0%E4%B8%AA%E6%80%A7%E5%8C%96%E8%88%92%E9%80%82%E7%BB%88%E7%AB%AF/image-20210420192318838.png" srcset="/img/loading.gif" lazyload alt="image-20210420192318838"></p>
+<p>加好后执行命令使修改生效：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ~/.zshrc<br></code></pre></td></tr></table></figure>
+<p>另外附上<a href="[https://github.com/sirius1024...](https://github.com/sirius1024/iterm2-with-oh-my-zsh">代码补全插件的开源地址</a>)</p>
+<h1 id="安装代码高亮插件"><a href="#安装代码高亮插件" class="headerlink" title="安装代码高亮插件"></a>安装代码高亮插件</h1><p><del>我们的口令是：代码可以不写，高亮得先整好！</del></p>
+<p>和上面代码补全插件一样的安装方式，执行脚本安装，而后打开zshrc文件进行编辑。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">cd ~<span class="hljs-regexp">/.oh-my-zsh/</span>custom<span class="hljs-regexp">/plugins/</span><br>git clone https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/zsh-users/</span>zsh-autosuggestions<br>vi ~/.zshrc<br></code></pre></td></tr></table></figure>
+<p>找到plugins，此时plugins中应该已经有了git，我们需要把代码高亮zsh-syntax-hignlighting也加上。</p>
+<p><strong>注意：代码高亮插件一定要是在最后一行。</strong></p>
+<p><img src="/2021/04/19/%E7%94%A8oh-my-zsh-powerlevel10k%E6%89%93%E9%80%A0%E4%B8%AA%E6%80%A7%E5%8C%96%E8%88%92%E9%80%82%E7%BB%88%E7%AB%AF/image-20210420193412909.png" srcset="/img/loading.gif" lazyload alt="image-20210420193412909"></p>
+<h1 id="安装喜欢的主题"><a href="#安装喜欢的主题" class="headerlink" title="安装喜欢的主题"></a>安装喜欢的主题</h1><p>其实完成到这里，已经可以更好地使用terminal了！但是如果想要让你的终端更好看的话，可以安装喜欢的主题和字体～</p>
+<h2 id="安装agnoster主题"><a href="#安装agnoster主题" class="headerlink" title="安装agnoster主题"></a>安装agnoster主题</h2><p>agnoster主题的效果图如下：</p>
+<p><img src="/2021/04/19/%E7%94%A8oh-my-zsh-powerlevel10k%E6%89%93%E9%80%A0%E4%B8%AA%E6%80%A7%E5%8C%96%E8%88%92%E9%80%82%E7%BB%88%E7%AB%AF/image-20210425201457996.png" srcset="/img/loading.gif" lazyload alt="agnoster主题"></p>
+<p>为了正确显示以上效果，需要安装powerline和power fonts。</p>
+<h3 id="安装powerline"><a href="#安装powerline" class="headerlink" title="安装powerline"></a>安装powerline</h3><blockquote>
+<p>Powerline使用几种特殊的字形来获得箭头效果，并为开发人员提供一些自定义符号。这需要在系统中安装符号字体或修补字体。使用过的应用程序（例如终端仿真器）也必须配置为使用修补字体。</p>
+<p><a target="_blank" rel="noopener" href="http://powerline.readthedocs.io/en/latest/installation.html">Powerline官网</a></p>
+</blockquote>
+<p>安装powerline的指令：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua">pip install powerline-<span class="hljs-built_in">status</span> <span class="hljs-comment">--user</span><br></code></pre></td></tr></table></figure>
+<h3 id="安装Power-Fonts"><a href="#安装Power-Fonts" class="headerlink" title="安装Power Fonts"></a>安装Power Fonts</h3><p>将项目git clone至本地，然后执行源码中的install.sh来安装字体库。</p>
+<p>首先在你习惯的位置新建一个文件夹，如：~/opensource/</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-comment"># clone</span><br>git clone https:<span class="hljs-string">//github.com/powerline/fonts.git</span> <span class="hljs-params">--depth=1</span><br><span class="hljs-comment"># install</span><br><span class="hljs-keyword">cd</span> fonts<br><span class="hljs-string">./install.sh</span><br><span class="hljs-comment"># clean-up a bit</span><br><span class="hljs-keyword">cd</span> <span class="hljs-string">..</span><br>rm -rf fonts<br></code></pre></td></tr></table></figure>
+<p>安装好字体库之后，我们来设置terminal的字体，具体的操作是终端 -&gt; 偏好设置 -&gt; 描述文件 -&gt; 文本 -&gt; 字体。找到Meslo LG字体。有L、M、S可选。</p>
+<p>备注：如果是iterm2则为：iTerm2 -&gt; Preferences -&gt; Profiles -&gt; Text，在Font区域选中Change Font，然后更换字体。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%99%E7%A8%8B/">教程</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%8A%B1%E9%87%8C%E8%83%A1%E5%93%A8/">花里胡哨</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/04/21/%E7%94%A8%E8%84%9A%E6%9C%AC%E4%BE%BF%E5%88%A9%E7%94%9F%E6%B4%BB%E2%80%94%E2%80%94%E6%B8%85%E9%99%A4brew%E7%BC%93%E5%AD%98%E5%92%8C%E4%B8%80%E5%8F%A5%E6%8C%87%E4%BB%A4%E4%B8%8A%E4%BC%A0%E5%8D%9A%E6%96%87/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">用脚本便利生活——关于brew和hexo</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/04/14/hello-world/">
+                        <span class="hidden-mobile">Hello LXT</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start -->
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?meetLXT";
+            var git_color =['#e4dfd7', '#f9f4dc', '#f7e8aa', '#f7e8aa', '#f8df72', '#fcd217', '#fcc515', '#f28e16', '#fb8b05', '#d85916', '#f43e06'];
+            var git_user ="meetLXT";
+            var parent_div_git = document.getElementById('recent-posts');
+            var git_div_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/about/'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('recent-posts')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:280px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style></style><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+</html>

@@ -1,0 +1,585 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/reindeer2.png">
+  <link rel="icon" href="/img/reindeer2.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="前言在不改动源文件的前提下，通过修改css或js文件，美化修改fluid主题的博客！
+根据我的个人审美，我主要进行修改的部分是动态彩条，鼠标、看板娘、头部打字机颜色效果渐变、滚动条颜色。
+这篇文章有参考一个csdn的博客：参考源">
+  <meta name="author" content="LXT">
+  <meta name="keywords" content="">
+  
+  <title>美化fulid主题 - PLpudding‘s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>PLpudding's blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bkg.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="美化fulid主题">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-23 22:15" pubdate>
+        2021年4月23日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      13
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">美化fulid主题</h1>
+            
+            <div class="markdown-body">
+              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在不改动源文件的前提下，通过修改css或js文件，美化修改fluid主题的博客！</p>
+<p>根据我的个人审美，我主要进行修改的部分是动态彩条，鼠标、看板娘、头部打字机颜色效果渐变、滚动条颜色。</p>
+<p>这篇文章有参考一个csdn的博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43471926/article/details/109798811">参考源</a></p>
+<span id="more"></span>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>打开fliud的config.yml文件，在里面找到custom_css和custom_js的位置，分别在两者的下面进行引入。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs awk">custom_js:<br>  - <span class="hljs-regexp">/js/</span>diy/timeDate.js<br>  - <span class="hljs-regexp">//</span>cdn.jsdelivr.net<span class="hljs-regexp">/npm/</span>aplayer<span class="hljs-regexp">/dist/</span>APlayer.min.js  <span class="hljs-comment">#/APlayer#/APlayer依赖</span><br>  - <span class="hljs-regexp">//</span>cdn.jsdelivr.net<span class="hljs-regexp">/gh/m</span>etowolf<span class="hljs-regexp">/Metingjs@1.2/</span>dist<span class="hljs-regexp">/Meting.min.js  #/</span>APlayer依赖<br><span class="hljs-comment"># 指定自定义 .css 文件路径，用法和 custom_js 相同</span><br><span class="hljs-comment"># The usage is the same as custom_js</span><br>custom_css:<br>  - <span class="hljs-regexp">/css/</span>diy/shubiao.css <span class="hljs-comment">#鼠标指针</span><br>  - <span class="hljs-regexp">//</span>cdn.jsdelivr.net<span class="hljs-regexp">/npm/</span>aplayer<span class="hljs-regexp">/dist/</span>APlayer.min.css   <span class="hljs-comment">#/APlayer依赖</span><br></code></pre></td></tr></table></figure>
+<h2 id="js类"><a href="#js类" class="headerlink" title="js类"></a>js类</h2><h3 id="动态彩条"><a href="#动态彩条" class="headerlink" title="动态彩条"></a>动态彩条</h3><p>这个效果据说是next主题自带的。</p>
+<p><img src="/2021/04/23/%E7%BE%8E%E5%8C%96fulid%E4%B8%BB%E9%A2%98/image-20210423225925242.png" srcset="/img/loading.gif" lazyload alt="效果图"></p>
+<p>复制在上面说到的custom_js的下面：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span>cdn.jsdelivr.net<span class="hljs-regexp">/gh/</span>bynotes<span class="hljs-regexp">/texiao/</span>source<span class="hljs-regexp">/js/</span>caidai.js <span class="hljs-comment"># 动态彩带</span><br></code></pre></td></tr></table></figure>
+<h3 id="静态彩条，点击改变形状"><a href="#静态彩条，点击改变形状" class="headerlink" title="静态彩条，点击改变形状"></a>静态彩条，点击改变形状</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span>cdn.jsdelivr.net<span class="hljs-regexp">/gh/</span>bynotes<span class="hljs-regexp">/texiao/</span>source<span class="hljs-regexp">/js/</span>jingtaisidai.js <span class="hljs-comment"># 静态彩带</span><br></code></pre></td></tr></table></figure>
+<h3 id="动态黑色线条"><a href="#动态黑色线条" class="headerlink" title="动态黑色线条"></a>动态黑色线条</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span>cdn.jsdelivr.net<span class="hljs-regexp">/gh/</span>bynotes<span class="hljs-regexp">/texiao/</span>source<span class="hljs-regexp">/js/</span>xiantiao.js <span class="hljs-comment"># 动态黑色线条</span><br></code></pre></td></tr></table></figure>
+<h2 id="css类"><a href="#css类" class="headerlink" title="css类"></a>css类</h2><h3 id="头部打字机颜色效果渐变"><a href="#头部打字机颜色效果渐变" class="headerlink" title="头部打字机颜色效果渐变"></a>头部打字机颜色效果渐变</h3><p>我当初选择fluid主题的一个原因就是很喜欢这个头部打印机效果，那么现在还可以让这个头部打印机效果更好看！</p>
+<p><img src="/2021/04/23/%E7%BE%8E%E5%8C%96fulid%E4%B8%BB%E9%A2%98/image-20210423230445369.png" srcset="/img/loading.gif" lazyload alt="效果图"></p>
+<p>在上面说的custom_css下面添加：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span>cdn.jsdelivr.net<span class="hljs-regexp">/gh/</span>bynotes<span class="hljs-regexp">/texiao/</span>source<span class="hljs-regexp">/css/</span>toubudaziji.css <span class="hljs-comment"># 头部打字机颜色效果渐变</span><br></code></pre></td></tr></table></figure>
+<p>当然，如果你不想要渐变的话：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span>cdn.jsdelivr.net<span class="hljs-regexp">/gh/</span>bynotes<span class="hljs-regexp">/texiao/</span>source<span class="hljs-regexp">/css/</span>daziyanse.css<span class="hljs-comment"># 头部打字机颜色</span><br></code></pre></td></tr></table></figure>
+<h3 id="滚动条颜色"><a href="#滚动条颜色" class="headerlink" title="滚动条颜色"></a>滚动条颜色</h3><p><img src="/2021/04/23/%E7%BE%8E%E5%8C%96fulid%E4%B8%BB%E9%A2%98/image-20210423230652438.png" srcset="/img/loading.gif" lazyload alt="效果图"></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span>cdn.jsdelivr.net<span class="hljs-regexp">/gh/</span>bynotes<span class="hljs-regexp">/texiao/</span>source<span class="hljs-regexp">/css/gu</span>ndongtiao.css<span class="hljs-comment"># 滚动条颜色</span><br></code></pre></td></tr></table></figure>
+<h3 id="鼠标指针"><a href="#鼠标指针" class="headerlink" title="鼠标指针"></a>鼠标指针</h3><p><img src="/2021/04/23/%E7%BE%8E%E5%8C%96fulid%E4%B8%BB%E9%A2%98/8b8d7c0c1f0793c36590dc5f12f676a8.png" srcset="/img/loading.gif" lazyload alt="效果图"></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span>cdn.jsdelivr.net<span class="hljs-regexp">/gh/</span>bynotes<span class="hljs-regexp">/texiao/</span>source<span class="hljs-regexp">/css/</span>shubiao.css<span class="hljs-comment"># 鼠标指针</span><br></code></pre></td></tr></table></figure>
+<h2 id="看板娘"><a href="#看板娘" class="headerlink" title="看板娘"></a>看板娘</h2><p><img src="/2021/04/23/%E7%BE%8E%E5%8C%96fulid%E4%B8%BB%E9%A2%98/image-20210423230905281.png" srcset="/img/loading.gif" lazyload alt="image-20210423230905281"></p>
+<p>想拥有一只这样的动态小猫吗？或者像我一样很想养猫但苦于时候未到只能云养猫。（或者想要其他模型来陪伴你的博客，比如美少女。）</p>
+<p>那么首先在hexo根目录下执行命令来安装模块。</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs delphi">npm install --save hexo-<span class="hljs-keyword">helper</span>-live2d<br><span class="hljs-comment">// 没有纸飞机的小伙伴建议在前面加个c，像这样，下面的下载模型也一样我就不再说了</span><br>cnpm install --save hexo-<span class="hljs-keyword">helper</span>-live2d<br></code></pre></td></tr></table></figure>
+<p>然后下载模型。</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> &#123;packagename&#125;<br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://huaji8.top/post/live2d-plugin-2.0/">模型预览</a></p>
+<p>packagename 如下：</p>
+<ul>
+<li>live2d-widget-model-chitose</li>
+<li>live2d-widget-model-epsilon2_1</li>
+<li>live2d-widget-model-gf</li>
+<li>live2d-widget-model-haru/01</li>
+<li>live2d-widget-model-haru/02</li>
+<li>live2d-widget-model-haruto</li>
+<li>live2d-widget-model-hibiki</li>
+<li>live2d-widget-model-hijiki</li>
+<li>live2d-widget-model-izumi</li>
+<li>live2d-widget-model-koharu</li>
+<li>live2d-widget-model-miku</li>
+<li>live2d-widget-model-ni-j</li>
+<li>live2d-widget-model-nico</li>
+<li>live2d-widget-model-nietzsche</li>
+<li>live2d-widget-model-nipsilon</li>
+<li>live2d-widget-model-nito</li>
+<li>live2d-widget-model-shizuku</li>
+<li>live2d-widget-model-tororo</li>
+<li>live2d-widget-model-tsumiki</li>
+<li>live2d-widget-model-unitychan</li>
+<li>live2d-widget-model-wanko</li>
+<li>live2d-widget-model-z16</li>
+</ul>
+<p>比如我的小白猫用的就是如下指令：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">npm</span> install live<span class="hljs-number">2</span>d-widget-model-tororo<br></code></pre></td></tr></table></figure>
+<p>下面我们进行相关配置，也是遵循<a target="_blank" rel="noopener" href="https://github.com/EYHN/hexo-helper-live2d">live2d官方文档</a>里的教程。</p>
+<p>官方文档说在fluid主题下的config.yml文件或hexo下的config.yml文件进行修改都可以，我自己操作的话是发现我这边只有在hexo下的config文件进行修改不出错。</p>
+<p>在config.yml文件的最后加入以下代码：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">live2d:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-comment"># enable: false</span><br>  <span class="hljs-attr">pluginRootPath:</span> <span class="hljs-string">live2dw/</span> <span class="hljs-comment"># Root path of plugin to be on the site (Relative)</span><br>  <span class="hljs-attr">pluginJsPath:</span> <span class="hljs-string">lib/</span> <span class="hljs-comment"># JavaScript path related to plugin&#x27;s root (Relative)</span><br>  <span class="hljs-attr">pluginModelPath:</span> <span class="hljs-string">assets/</span> <span class="hljs-comment"># Relative model path related to plugin&#x27;s root (Relative)</span><br>  <span class="hljs-attr">scriptFrom:</span> <span class="hljs-string">local</span> <span class="hljs-comment"># Default</span><br>  <span class="hljs-comment"># scriptFrom: jsdelivr # jsdelivr CDN</span><br>  <span class="hljs-comment"># scriptFrom: unpkg # unpkg CDN</span><br>  <span class="hljs-comment"># scriptFrom: https://cdn.jsdelivr.net/npm/live2d-widget@3.x/lib/L2Dwidget.min.js # Your custom url</span><br>  <span class="hljs-attr">tagMode:</span> <span class="hljs-literal">false</span> <span class="hljs-comment"># Whether only to replace live2d tag instead of inject to all pages</span><br>  <span class="hljs-attr">log:</span> <span class="hljs-literal">false</span> <span class="hljs-comment"># Whether to show logs in console</span><br>  <span class="hljs-attr">model:</span><br>    <span class="hljs-attr">use:</span> <span class="hljs-string">live2d-widget-model-tororo</span> <span class="hljs-comment"># 模型名字 npm-module package name</span><br></code></pre></td></tr></table></figure>
+<p>具体参数可以自行调整，甚至你可以diy修改模型。方法是找到模型的目录，可以直接搜索模型名 tororo ，找到里面 texture_00.png 的图片，利用PS软件或其他方式对图片文件进行修改，创造独属于你的模型。</p>
+<p>我找到我模型的位置是在/Users/lxt/blog/node_modules/live2d-widget-model-tororo/assets/moc/tororo.2048，仅供参考。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%99%E7%A8%8B/">教程</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%8A%B1%E9%87%8C%E8%83%A1%E5%93%A8/">花里胡哨</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/05/24/latex%E8%BF%9B%E9%98%B6%E8%AE%B0%E5%BD%95/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">latex进阶记录</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/04/21/%E7%94%A8%E8%84%9A%E6%9C%AC%E4%BE%BF%E5%88%A9%E7%94%9F%E6%B4%BB%E2%80%94%E2%80%94%E6%B8%85%E9%99%A4brew%E7%BC%93%E5%AD%98%E5%92%8C%E4%B8%80%E5%8F%A5%E6%8C%87%E4%BB%A4%E4%B8%8A%E4%BC%A0%E5%8D%9A%E6%96%87/">
+                        <span class="hidden-mobile">用脚本便利生活——关于brew和hexo</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start -->
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?meetLXT";
+            var git_color =['#e4dfd7', '#f9f4dc', '#f7e8aa', '#f7e8aa', '#f8df72', '#fcd217', '#fcc515', '#f28e16', '#fb8b05', '#d85916', '#f43e06'];
+            var git_user ="meetLXT";
+            var parent_div_git = document.getElementById('recent-posts');
+            var git_div_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/about/'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('recent-posts')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:280px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style></style><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+</html>
