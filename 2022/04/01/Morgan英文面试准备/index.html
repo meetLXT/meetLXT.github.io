@@ -14,7 +14,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="前言虽然Morgan面试这事儿已经翻篇啦，把之前自己为英文面试做准备的草稿整理一下传上来。有的是英文句子，有的是英文关键词，有的是中文，有的是博客链接。提前说明：1）由于本人比较菜，之前也没正儿八经准备过408/八股这类，所以可能有些很简单的问题或者很差劲的回答。2）本博客没有做教程的目的，主要是为了记录。如果能给他人起一点参考则更好。3）所有的题目主要是针对网络搜集的摩根的面经而作的准备，很可能">
+  <meta name="description" content="前言虽然Morgan面试这事儿已经翻篇啦，把之前自己为英文面试做准备的草稿整理一下传上来。有的是英文句子，有的是英文关键词，有的是中文，有的是博客链接。提前说明：1）由于本人比较菜，之前也没正儿八经准备过408/八股这类，所以可能有些很简单的问题或者很差劲很一般的回答。2）本博客没有做教程的目的，主要是为了记录。如果能给他人起一点参考则更好。3）所有的题目主要是针对网络搜集的摩根的面经而作的准备，">
   <meta name="author" content="LXT">
   <meta name="keywords" content="">
   
@@ -203,7 +203,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.5k 字
+      1.6k 字
     </span>
   
 
@@ -213,7 +213,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      17
+      19
        分钟
     </span>
   
@@ -246,7 +246,7 @@
             <h1 style="display: none">Morgan英文面试准备</h1>
             
             <div class="markdown-body">
-              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>虽然Morgan面试这事儿已经翻篇啦，把之前自己为英文面试做准备的草稿整理一下传上来。有的是英文句子，有的是英文关键词，有的是中文，有的是博客链接。提前说明：1）由于本人比较菜，之前也没正儿八经准备过408/八股这类，所以可能有些很简单的问题或者很差劲的回答。2）本博客没有做教程的目的，主要是为了记录。如果能给他人起一点参考则更好。3）所有的题目主要是针对网络搜集的摩根的面经而作的准备，很可能对面试其他外企没有帮助。</p>
+              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>虽然Morgan面试这事儿已经翻篇啦，把之前自己为英文面试做准备的草稿整理一下传上来。有的是英文句子，有的是英文关键词，有的是中文，有的是博客链接。提前说明：1）由于本人比较菜，之前也没正儿八经准备过408/八股这类，所以可能有些很简单的问题或者很差劲很一般的回答。2）本博客没有做教程的目的，主要是为了记录。如果能给他人起一点参考则更好。3）所有的题目主要是针对网络搜集的摩根的面经而作的准备，很可能对面试其他外企没有帮助。</p>
 <span id="more"></span>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="数据库相关"><a href="#数据库相关" class="headerlink" title="数据库相关"></a>数据库相关</h2><h3 id="SQL-Injection"><a href="#SQL-Injection" class="headerlink" title="SQL Injection"></a>SQL Injection</h3><h4 id="Concept："><a href="#Concept：" class="headerlink" title="Concept："></a>Concept：</h4><p>an attack method, utilize programmers’ negligence to achieve to login without account, or even temper the DB</p>
 <h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs sql">String <span class="hljs-keyword">sql</span> <span class="hljs-operator">=</span> &quot;select * from user_table where username=<br>&#x27; &quot;<span class="hljs-operator">+</span>userName<span class="hljs-operator">+</span>&quot; &#x27; and password=&#x27; &quot;<span class="hljs-operator">+</span>password<span class="hljs-operator">+</span>&quot; &#x27;&quot;;<br><br><span class="hljs-comment">--当输入了上面的用户名和密码，上面的SQL语句变成：</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> user_table <span class="hljs-keyword">WHERE</span> username<span class="hljs-operator">=</span><br><span class="hljs-string">&#x27;’or 1 = 1 -- and password=&#x27;</span>’<br><br>&quot;&quot;&quot;<br>--分析SQL语句：<br>--条件后面username=”or 1=1 用户名等于 ” 或1=1 那么这个条件一定会成功；<br><br>--然后后面加两个-，这意味着注释，它将后面的语句注释，让他们不起作用，这样语句永远都--能正确执行，用户轻易骗过系统，获取合法身份。<br>--这还是比较温柔的，如果是执行<br>SELECT * FROM user_table WHERE<br>username=&#x27;&#x27; ;DROP DATABASE (DB Name) --&#x27; and password=&#x27;&#x27;<br>--其后果可想而知…<br></code></pre></td></tr></table></figure>
@@ -349,7 +349,22 @@
 <li>列式数据库</li>
 <li>图形数据库</li>
 </ul>
-<h2 id="操作系统相关"><a href="#操作系统相关" class="headerlink" title="操作系统相关"></a>操作系统相关</h2><h3 id><a href="#" class="headerlink" title=" "></a> </h3>
+<h4 id="Clustered-Index-and-Unclustered-Index"><a href="#Clustered-Index-and-Unclustered-Index" class="headerlink" title="Clustered Index and Unclustered Index"></a>Clustered Index and Unclustered Index</h4><p>聚簇索引的顺序就是数据的物理存储顺序，而对非聚簇索引的索引顺序与数据物理排列顺序无关。</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/fa8192853184">参考链接</a></p>
+<h2 id="操作系统相关"><a href="#操作系统相关" class="headerlink" title="操作系统相关"></a>操作系统相关</h2><h3 id="Thread-and-process"><a href="#Thread-and-process" class="headerlink" title="Thread and process"></a>Thread and process</h3><ul>
+<li><p>features</p>
+<ul>
+<li><p>Thread: run in shared memory space; easier tocreate and terminate; lightweight; possess fewer resources; faster task-switching; data sharing with otherthread; care synchronization overhead of shared data;</p>
+</li>
+<li><p>Process: separate memory space; heavyweight; possess more resources; independent of each other; consist of mutipule thread</p>
+</li>
+</ul>
+</li>
+<li><p>Communication Method</p>
+<p>​    <a target="_blank" rel="noopener" href="https://blog.csdn.net/liyue98/article/details/80112246">参考链接</a></p>
+</li>
+</ul>
+
             </div>
             <hr>
             <div>
