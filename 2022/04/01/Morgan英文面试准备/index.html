@@ -203,7 +203,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.6k 字
+      1.8k 字
     </span>
   
 
@@ -213,7 +213,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      19
+      23
        分钟
     </span>
   
@@ -272,6 +272,8 @@
 <li>Durable (once the change has happened - ifthe systemsays the transaction has been committed, the client doesn’t need toworry about”flushing” the system to make the change”stick”)</li>
 </ul>
 <h3 id="Transaction-Concurrency-Problems"><a href="#Transaction-Concurrency-Problems" class="headerlink" title="Transaction Concurrency Problems"></a>Transaction Concurrency Problems</h3><ul>
+<li><p>concept of transaction: A transaction is a unit of work that you want to treat as “a whole”. It has to either happen in full, or not at all.</p>
+</li>
 <li><p>problems</p>
 <ul>
 <li><p>miss modification:更新操作被另外一个事务的更新操作替换</p>
@@ -364,6 +366,17 @@
 <p>​    <a target="_blank" rel="noopener" href="https://blog.csdn.net/liyue98/article/details/80112246">参考链接</a></p>
 </li>
 </ul>
+<h3 id="linux-常用命令"><a href="#linux-常用命令" class="headerlink" title="linux 常用命令"></a>linux 常用命令</h3><p><a target="_blank" rel="noopener" href="https://github.com/Qiu-Ye/InterviewFAQ-Linux#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">参考链接</a></p>
+<h2 id="Java相关"><a href="#Java相关" class="headerlink" title="Java相关"></a>Java相关</h2><h3 id="Difference-between-Java-and-C"><a href="#Difference-between-Java-and-C" class="headerlink" title="Difference between Java and C++"></a>Difference between Java and C++</h3><h4 id="Five-words-to-conclude"><a href="#Five-words-to-conclude" class="headerlink" title="Five words to conclude"></a>Five words to conclude</h4><ul>
+<li>C++: object-oriented,  Platform or Machine Independent/ Portable, Compiler-Based, Speed, DMA (Dynamic Memory Allocation)</li>
+<li>Java: object-oriented, interpreter-based, Robust, Platform Independent/ Portable, Multithreaded, high performance, distributed,</li>
+</ul>
+<h4 id="Difference"><a href="#Difference" class="headerlink" title="Difference"></a>Difference</h4><p>Although Java and C++ are both object-oriented languages that support encapsulation, inheritance, and polymorphism, there are a number of differences between them. Java does not provide pointers for direct memory access, which makes program memory safer Java classes are mono-inherited, C++ supports multiple inheritance; although Java classes cannot be multi-inherited, interfaces can be multi-inherited. Java has an automatic memory management garbage collection mechanism (GC), which does not require the programmer to release useless memory manually. C ++ supports both method overloading and operator overloading, but Java only supports method overloading (operator overloading adds complexity, which is inconsistent with Java’s original design philosophy).</p>
+<h3 id="Override-and-overload"><a href="#Override-and-overload" class="headerlink" title="Override and overload"></a>Override and overload</h3><ul>
+<li>overload: polymophism, different methods in a class (which have different type and number of parameters)</li>
+<li>override: subclass inherit parent class and make some difference; and if use the original method in parent class —&gt; use Super</li>
+</ul>
+<p><img src="/2022/04/01/Morgan%E8%8B%B1%E6%96%87%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/image-20220401214234878.png" srcset="/img/loading.gif" lazyload alt="override &amp; overload"></p>
 
             </div>
             <hr>
