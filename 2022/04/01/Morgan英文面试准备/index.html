@@ -203,7 +203,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.8k 字
+      2.3k 字
     </span>
   
 
@@ -213,7 +213,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      23
+      31
        分钟
     </span>
   
@@ -377,6 +377,42 @@
 <li>override: subclass inherit parent class and make some difference; and if use the original method in parent class —&gt; use Super</li>
 </ul>
 <p><img src="/2022/04/01/Morgan%E8%8B%B1%E6%96%87%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/image-20220401214234878.png" srcset="/img/loading.gif" lazyload alt="override &amp; overload"></p>
+<h3 id="线程安全的数据结构-函数："><a href="#线程安全的数据结构-函数：" class="headerlink" title="线程安全的数据结构/函数："></a>线程安全的数据结构/函数：</h3><p>HashTable，ConcurrentHashMap，CopyOnWriteArrayList，CopyOnWriteArraySet，ConcurrentLinkedQueue，Vector，StringBuffer</p>
+<h3 id="Objective-oriented-Programming"><a href="#Objective-oriented-Programming" class="headerlink" title="Objective-oriented Programming"></a>Objective-oriented Programming</h3><p>It is to model and abstract the problem solving methods into objects. Then giving properties and methods to these objects and letting the objects perform these operations.</p>
+<h4 id="features"><a href="#features" class="headerlink" title="features"></a>features</h4><ul>
+<li><p>Polymorphism:  Polymorphism is the ability (in programming)to present the same interface for differing underlying forms (data types). Polymorphism is when you can treat an object as a generic version of something, but when you access it, the code determines which exact type it is and calls the associated code</p>
+</li>
+<li><p>Encapsulation: Data and data-based operations are encapsulated using abstract data types so that they form an indivisible, independent entity. The data is protected inside the abstract data type, hiding the internal details as much as possible and keeping only some external interfaces to connect it to the outside. The user does not need to care about the internal details of the object, but can access the object through the interfaces provided by the object to the outside.</p>
+</li>
+<li><p>inheritance: allow us to define a class in terms of another class, which makes it easier to create and maintain an application. This also provides an opportunity to reuse the code functionality and fast implementation time.</p>
+</li>
+</ul>
+<h4 id="advantages"><a href="#advantages" class="headerlink" title="advantages"></a>advantages</h4><p>Easy to maintain, expand, euse, can design a low-coupling system, easy to expand, reuse.</p>
+<h4 id="网上2022摩根面经中的2个题目"><a href="#网上2022摩根面经中的2个题目" class="headerlink" title="网上2022摩根面经中的2个题目"></a>网上2022摩根面经中的2个题目</h4><ul>
+<li><p>how to desian a system like taobao</p>
+<ul>
+<li>first: MVC(Model View Controller) design a web —&gt; develop front-end (i.e. html5 css3 javascript jquery  vue) + back-end(including database) (some framwork, like Springboot)<ul>
+<li>database can be uploaded to cloud servers</li>
+</ul>
+</li>
+<li>consider high-concurrency:<ul>
+<li>divide service, a database for a service</li>
+<li>cache , can use Redis, 高并发场景，大多<strong>读多写少</strong>，可以在数据库和缓存里都写一份，然后读时大量走缓存。</li>
+<li>mq for 异步 Synchronous</li>
+<li>主从架构读写分离，主库写，从库读</li>
+<li>Elasticsearch ，for scalability</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>设计一个搜索引擎类，去调用已有的各种搜索引擎（比如google、bing等等），对于用户来说输入一些关键词就能得到搜索结果</p>
+<ul>
+<li>爬取creep：怎么爬取？广度爬取？深度爬取？算法如何打算最优？</li>
+<li>索引index：索引爬取的数据，得去做去重分析，建立相关数据库，数据库的量也是庞大的</li>
+<li>收录：怎么确定收录页面的排名？得涉及到相关的排名算法，是以页面内容为导向？外部链接为导向？等等</li>
+</ul>
+</li>
+</ul>
 
             </div>
             <hr>
