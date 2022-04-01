@@ -203,7 +203,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.8k 字
+      3.8k 字
     </span>
   
 
@@ -213,7 +213,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      39
+      56
        分钟
     </span>
   
@@ -369,6 +369,7 @@
 <h3 id="linux-常用命令"><a href="#linux-常用命令" class="headerlink" title="linux 常用命令"></a>linux 常用命令</h3><p><a target="_blank" rel="noopener" href="https://github.com/Qiu-Ye/InterviewFAQ-Linux#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">参考链接</a></p>
 <h3 id="concurrency-and-parallelism"><a href="#concurrency-and-parallelism" class="headerlink" title="concurrency and parallelism"></a>concurrency and parallelism</h3><p>The difference between concurrency and parallelism lies in the number of events handled. Concurrency means that you can handle multiple simultaneous events, and parallelism means that you can handle two events at the same time.</p>
 <p>For example，Concurrency is when multiple tasks use the CPU alternately, or only one task is running at a time. Parallelism is when multiple tasks are running simultaneously</p>
+<h2 id="计算机网络相关"><a href="#计算机网络相关" class="headerlink" title="计算机网络相关"></a>计算机网络相关</h2><h3 id="TCP-amp-UDP"><a href="#TCP-amp-UDP" class="headerlink" title="TCP &amp; UDP"></a>TCP &amp; UDP</h3><p><img src="/2022/04/01/Morgan%E8%8B%B1%E6%96%87%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/image-20220401224110774.png" srcset="/img/loading.gif" lazyload alt="TCP and UDP"></p>
 <h2 id="Java相关"><a href="#Java相关" class="headerlink" title="Java相关"></a>Java相关</h2><h3 id="Difference-between-Java-and-C"><a href="#Difference-between-Java-and-C" class="headerlink" title="Difference between Java and C++"></a>Difference between Java and C++</h3><h4 id="Five-words-to-conclude"><a href="#Five-words-to-conclude" class="headerlink" title="Five words to conclude"></a>Five words to conclude</h4><ul>
 <li>C++: object-oriented,  Platform or Machine Independent/ Portable, Compiler-Based, Speed, DMA (Dynamic Memory Allocation)</li>
 <li>Java: object-oriented, interpreter-based, Robust, Platform Independent/ Portable, Multithreaded, high performance, distributed,</li>
@@ -451,6 +452,55 @@
 <li>Gennerational:(young: coping, old: mark-sweep/compact, permenant: class, const, staticvariable, method)</li>
 <li>CMS: Initial Mark, Concurrent Mark, Remark, Concurrent Sweep</li>
 </ul>
+<h3 id="hashmap、hashtable、CurrentHashMap"><a href="#hashmap、hashtable、CurrentHashMap" class="headerlink" title="hashmap、hashtable、CurrentHashMap"></a>hashmap、hashtable、CurrentHashMap</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yangjinprocess/p/10128790.html">参考链接</a></p>
+<h3 id="hashCode"><a href="#hashCode" class="headerlink" title="hashCode"></a>hashCode</h3><ul>
+<li>Integer: 以对应的int值作为hash值</li>
+<li>String：h = 31 * h + val[i];</li>
+<li>Character: ASCII</li>
+</ul>
+<h3 id="JVM-heap-and-stack"><a href="#JVM-heap-and-stack" class="headerlink" title="JVM heap and stack"></a>JVM heap and stack</h3><ul>
+<li>栈解决程序的运行问题，即程序如何执行，或者说如何处理数据；堆解决的是数据存储的问题，即数据怎么放、放在哪儿。</li>
+<li>栈因为是运行单位，因此里面存储的信息都是跟当前线程相关的信息。包括：局部变量、程序运行状态、方法返回值等等；而堆只负责存储对象信息。</li>
+</ul>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><h3 id="几种排序算法"><a href="#几种排序算法" class="headerlink" title="几种排序算法"></a>几种排序算法</h3><h4 id="Quick-Sort"><a href="#Quick-Sort" class="headerlink" title="Quick Sort"></a>Quick Sort</h4><ul>
+<li><p><strong>Concept</strong>: Using a pivot point element, partition the array into two sections where everything below the pivot point is smaller and everything above the pivot is larger. The pivot point then moves through the values on the left putting them in order and the then values on the right. This a ‘divide and conquer’ algorithm since it involves making the larger list into smaller lists which are easier to sort.</p>
+</li>
+<li><p>Time complexity: Average case is O(nlogn).</p>
+</li>
+<li>Code: The implementation will involve a partition function where you split the list into sub-parts and recursively sort each part. It requires you to pick where the initial pivot point is and how the pivot moves through the list.</li>
+<li>Note: There are plenty of edge cases where it is less successful, but it is usually considered the all around best if you had to guess what to use. You can avoid most worst case scenarios by choosing the pivot wisely (the closest to the median possible).</li>
+</ul>
+<h4 id="Merge-Sort"><a href="#Merge-Sort" class="headerlink" title="Merge Sort"></a>Merge Sort</h4><ul>
+<li>Concept: Split arrays in half to create already sorted single element arrays and merge sorted arrays back together putting everything in the proper order</li>
+<li>Time complexity: O(nlogn). (another advantage：the space complexity of merge sort is good at O(n)</li>
+<li>Code: The implementation utilizes a merge function called again and again to reassemble all elements incorporating them in the correct position.</li>
+</ul>
+<h4 id="Insection-Sort"><a href="#Insection-Sort" class="headerlink" title="Insection Sort"></a>Insection Sort</h4><ul>
+<li>Concept: Iterate over list and place each element in its correct place as you get to it from first to last.</li>
+<li>Code: A while loop inside a for loop can create a process that keeps track of the indices where you can insert the latest element in the correct spot.</li>
+<li>Time complexity: Average is O(n²) and best is O(n)</li>
+<li>Note: Best to use when the list is small and/or almost totally sorted. It takes a long time but it does have some pluses in stability and space. Be sure to mention this as an alternative to the above two sorts if the situation calls for stability/space.</li>
+</ul>
+<h4 id="Heap-Sort"><a href="#Heap-Sort" class="headerlink" title="Heap Sort"></a>Heap Sort</h4><ul>
+<li>Concept: Using a tree based data structure for storing elements in a sorted fashion.</li>
+<li>Code: The implementation uses heapify to make the list into a heap data structure (which is possible to do in array form). And then the second part is manipulating(操作) the elements by taking out the largest (or smallest) elements in order using the information stored in the data structure.</li>
+<li>Time complexity: All cases are O(nlogn).</li>
+<li>Note: It utilized the information stored in the binary tree rather than the information in the list itself to do the sorting, which makes it quicker in edge cases.</li>
+</ul>
+<h4 id="Bubble-Sort-and-Selection-Sort"><a href="#Bubble-Sort-and-Selection-Sort" class="headerlink" title="Bubble Sort and Selection Sort"></a><strong>Bubble Sort and Selection Sort</strong></h4><ul>
+<li>Concept: Bubble goes through list comparing adjacent element pairs and swaps pairs based on value. Selection goes through the list taking out the minimum element and, starting at the beginning, placing them in order.</li>
+<li>Code: Iterate many times over the list incrementing indexes and switching indexes as needed.</li>
+<li>Time complexity: Too long! Average is O(n²) and selection sort’s best case is even O(n²) as well.</li>
+<li>Note: These guys are not efficient and they don’t really have anything going for them to merit their use.</li>
+</ul>
+<h3 id="Binary-Sort-search-Tree"><a href="#Binary-Sort-search-Tree" class="headerlink" title="Binary Sort/search Tree"></a>Binary Sort/search Tree</h3><p>二叉查找树是指一棵空树或者具有下列性质的二叉树：</p>
+<p>若任意节点的左子树不空，则左子树上所有结点的值均小于或等于它的根结点的值；</p>
+<p>任意节点的右子树不空，则右子树上所有结点的值均大于它的根结点的值；</p>
+<p>任意节点的左、右子树也分别为二叉查找树。</p>
+<p>没有键值相等的节点（no duplicate nodes）。二叉查找树相比于其他数据结构的优势在于查找、插入的时间复杂度较低。为O(log n)。二叉查找树是基础性数据结构，用于构建更为抽象的数据结构，如集合、Multiset和关联数组等等。</p>
+<h3 id="AVL-Tree"><a href="#AVL-Tree" class="headerlink" title="AVL Tree"></a>AVL Tree</h3><p>AVL trees are height balancing binary search tree. AVL tree checks the height of the left and the right sub-trees and assures that the difference is not more than 1. This difference is called the Balance Factor. This allows us to search for an element in the AVL tree in O(log n), where n is the number of elements in the tree.</p>
+<h3 id="stack-and-heap"><a href="#stack-and-heap" class="headerlink" title="stack and heap"></a>stack and heap</h3><p>Stack: static; compile time; LIFO order; memory management automatically; access fast; Know how much data before compile, not too much;</p>
+<p>Heap: dynamic; run time; slower; size Is limited on virtual memory; allocate and free at any time </p>
 
             </div>
             <hr>
